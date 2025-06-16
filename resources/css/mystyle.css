@@ -1,5 +1,12 @@
 .height-custom {
 
-min-height: 60vh;
+min-height: 30vh;
 
+}
+
+
+
+card-w {
+
+    max-width: 300px;
 }

@@ -6,4 +6,18 @@ use App\Http\Controllers\ArticleController;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 
-Route::get ('/create/article', [ArticleController::class, 'create'])->name('create.article');
+
+
+// ------------ Articoli -------------
+
+//Crea articolo
+Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
+
+//Tutti gli articoli
+Route::get('/article/index', [ArticleController::class, 'index']) ->name('article.index');
+
+// Dettaglio Articolo
+Route::get ('/article/show/{article}', [ArticleController::class, 'show'])->name('article.show');
+
+// Dettaglio Categoria
+Route::get ('/category/{category}', [ArticleController::class, 'byCategory']) ->name ('byCategory');

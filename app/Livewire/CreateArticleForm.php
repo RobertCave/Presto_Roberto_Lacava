@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,7 @@ class CreateArticleForm extends Component
             'title' => $this->title,
             'description' => $this->description,
             'price' => $this->price,
-            'category' => $this->category,
+            'category_id' => $this->category,
             'user_id' => Auth::id()
         ]);
 
@@ -42,6 +43,9 @@ class CreateArticleForm extends Component
 
     public function render()
     {
-        return view('livewire.create-article-form');
+        $categories = Category::all();
+        return view('livewire.create-article-form', [
+            'categories' => $categories
+        ]);
     }
 }
