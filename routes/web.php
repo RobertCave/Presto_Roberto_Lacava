@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\RevisorController;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 
@@ -21,3 +22,20 @@ Route::get ('/article/show/{article}', [ArticleController::class, 'show'])->name
 
 // Dettaglio Categoria
 Route::get ('/category/{category}', [ArticleController::class, 'byCategory']) ->name ('byCategory');
+
+ 
+// ------------  Revisori ------------
+//  Dashboard revisori 
+Route::get('/revisor/index', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
+
+// Revisori - accettare l'annuncio
+Route::patch('/revisor/accept/{article}', [RevisorController::class, 'accept'])->name('accept');
+
+// Revisori - Rifiutare l'annuncio
+Route::patch('/revisor/reject/{article}', [RevisorController::class, 'reject'])->name('reject');
+
+// Richiesta per fare il revisore
+Route::get('/revisor/request', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name ('revisor.become');
+
+// Creare un revisore
+Route:: get('/revisor/make/{user}', [RevisorController:: class, 'makeRevisor'])->name( 'revisor.make');

@@ -1,5 +1,6 @@
 <x-layout>
 
+   
     <!-- Header-->
     <header class="bg-dark py-2 bg-gradient">
         <div class="container px-4 height-custom">
@@ -11,6 +12,17 @@
             </div>
         </div>
     </header>
+
+     @if (session()->has('message'))
+        <div class="row justify-content-center">
+            <div class="col-12 alert alert-success text-center shadow rounded">
+                <h3 class="text-center pb-2">
+                    {{ session('message') }}
+                </h3>
+            </div>
+        </div>
+    @endif
+
 
     <div class="row height-custom justify-content-center align-items-center py-5">
         <h4 class="fw-bolder"> Ultimi 6 annunci pubblicati</h4>

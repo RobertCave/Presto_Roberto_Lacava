@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12">
-                <h3 >Dettaglio Annuncio </h3>
+                <h3>Dettaglio Annuncio </h3>
             </div>
         </div>
         <div class="row height-custom justify-content-center py-5">
@@ -15,7 +15,7 @@
                         </div>
                         <div class="carousel-item">
                             {{-- Piccolo accrocco per fare vedere immagini diverse - Just for Fun ! ;-) --}}
-                            <img src="https://picsum.photos/40{{ $article->id +1 }}"
+                            <img src="https://picsum.photos/40{{ $article->id + 1 }}"
                                 class="d-block w-100 rounded shadow" alt="...">
                         </div>
                         <div class="carousel-item">
@@ -34,17 +34,26 @@
                     </button>
                 </div>
             </div>
-            <div class="col-12 col-md-6 mb-3 height-custom "> Annuncio creato il: {{ $article->created_at->format('d/m/Y H:i')  }}
-                <h2 class="display-5"> 
-                    <span class="fw-bold">  
-                    {{ $article->title }}</span></h2>
+            <div class="col-12 col-md-6 mb-3 height-custom "> Annuncio creato il:
+                {{-- Un pochetto di stile per ora e data ;-)  --}}
+                {{ $article->created_at->format('d/m/Y H:i') }}
+                <h2 class="display-5">
+                    <span class="fw-bold">
+                        {{ $article->title }}</span>
+                </h2>
+                <p>Categoria annuncio: <span class="fw-bold"><a href="{{ route('byCategory', $article->category) }}"
+                            title="Visualizza tutti gli articoli in {{ $article->category->name }}">
+                            {{ $article->category->name }}
+                        </a> </span></p>
                 <h5>
-                   <div class="fw-bold"> Descrizione annuncio: </div> 
-                    <span>{!! nl2br($article->description) !!}</span>  </h5>
+                    <div class="fw-bold"> Descrizione annuncio: </div>
+                </h5>
+                {{-- Due ore per capire come eliminare i maledetti <br> nella visualizzazione della descrizione. grazie "nl2br" --}}
+                <h6> {!! nl2br($article->description) !!} </h6>
                 <div class=" d-flex flex-column justify-content-center h-75">
                     <h4> Prezzo: <strong>{{ $article->price }} € </strong>
                     </h4>
-                    
+
                 </div>
             </div>
         </div>

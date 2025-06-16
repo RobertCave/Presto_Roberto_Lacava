@@ -44,6 +44,20 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                             class="bi bi-lightning-charge"></i> Gestione annunci</a>
                     <div class="dropdown-menu">
+                        @if (Auth::user()->is_revisor)
+                            <li class="nav-item">
+                                <a class="dropdown-item" href="{{ route('revisor.index') }}"><i
+                                        class="bi bi-wrench-adjustable-circle"></i> Dashboard revisore
+                                        @if (\App\Models\Article::toBeRevisedCount() != 0)
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ \App\Models\Article::toBeRevisedCount() }}
+                                        </span>
+                                            
+                                        @endif
+                                </a>
+                            </li>
+                        @endif
+
                         <a href="{{ route('article.create') }}" class="dropdown-item"><i class="bi bi-journal-plus"></i>
                             Nuovo annuncio</a>
 
@@ -55,7 +69,9 @@
                 @auth
                     <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown"> Utente:
                         {{ Auth::user()->name }} <i class="bi bi-person-gear"></i></a>
+
                     <div class="dropdown-menu">
+
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('form-logout').submit();"
                             class="dropdown-item"> <i class="bi bi-person-dash-fill"></i> Logout</a>
