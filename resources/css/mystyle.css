@@ -20,7 +20,6 @@ width: 120px;
 }
 
 .card-img-top {
-    height: 350px;
     object-fit: cover;
     width: 100%;
 }
@@ -34,14 +33,12 @@ width: 120px;
 }
 
 .carousel-item img {
-    height: 350px;
     object-fit: cover;
     width: 100%;
 }
 
 /* Stili per le immagini nella pagina del revisore */
 .revisor-img-container {
-    height: 250px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

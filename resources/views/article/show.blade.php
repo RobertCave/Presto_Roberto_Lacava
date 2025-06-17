@@ -15,22 +15,25 @@
                             <!-- Indicatori del carosello -->
                             <div class="carousel-indicators">
                                 @foreach ($article->images as $key => $image)
-                                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{ $key }}" 
-                                        class="@if ($loop->first) active @endif" aria-current="@if ($loop->first) true @endif" 
+                                    <button type="button" data-bs-target="#carouselExample"
+                                        data-bs-slide-to="{{ $key }}"
+                                        class="@if ($loop->first) active @endif"
+                                        aria-current="@if ($loop->first) true @endif"
                                         aria-label="Slide {{ $key + 1 }}"></button>
                                 @endforeach
                             </div>
-                            
+
                             <!-- Contenuto del carosello -->
+
                             <div class="carousel-inner">
                                 @foreach ($article->images as $key => $image)
                                     <div class="carousel-item @if ($loop->first) active @endif">
-                                        <img src="{{ Storage::url($image->path) }}" class="d-block w-100"
+                                        <img src="{{ $image->getUrl(300, 300) }}" class="d-block w-100 rounded shadow"
                                             alt="Immagine {{ $key + 1 }} dell'articolo {{ $article->title }}">
                                     </div>
                                 @endforeach
                             </div>
-                            
+
                             @if ($article->images->count() > 1)
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                                     data-bs-slide="prev">
@@ -47,7 +50,8 @@
                     </div>
                 @else
                     <div class="carousel-container">
-                        <img src="https://picsum.photos/300" alt="Nessuna foto inserita dall'utente" class="d-block w-100">
+                        <img src="https://picsum.photos/300" alt="Nessuna foto inserita dall'utente"
+                            class="d-block w-100">
                     </div>
                 @endif
             </div>
@@ -56,26 +60,28 @@
             <div class="col-12 col-md-6 mb-3">
                 <div class="card h-100 border-0">
                     <div class="card-body">
-                        <p class="text-muted mb-1">{{ __('ui.anncreate') }} {{ $article->created_at->format('d/m/Y H:i') }}</p>
+                        <p class="text-muted mb-1">{{ __('ui.anncreate') }}
+                            {{ $article->created_at->format('d/m/Y H:i') }}</p>
                         <h2 class="card-title fw-bold mb-3">{{ $article->title }}</h2>
-                        
-                        <p class="mb-3">{{ __('ui.catsingle') }} 
+
+                        <p class="mb-3">{{ __('ui.catsingle') }}
                             <span class="fw-bold">
-                                <a href="{{ route('byCategory', $article->category) }}" 
-                                   title="{{ __('ui.viallart') }} {{ $article->category->name }}">
+                                <a href="{{ route('byCategory', $article->category) }}"
+                                    title="{{ __('ui.viallart') }} {{ $article->category->name }}">
                                     {{ $article->category->name }}
                                 </a>
                             </span>
                         </p>
-                        
+
                         <h5 class="fw-bold mt-4">{{ __('ui.descart') }}</h5>
                         <div class="description-container mb-4">
                             <h6>{!! nl2br($article->description) !!}</h6>
                         </div>
-                        
+
                         <div class="mt-auto">
                             <h3 class="fw-bold text-primary mb-4">{{ __('ui.price') }} {{ $article->price }}€</h3>
-                            <button class="btn btn-secondary me-md-1" onclick="window.history.back()">{{ __('ui.back') }}</button>
+                            <button class="btn btn-secondary me-md-1"
+                                onclick="window.history.back()">{{ __('ui.back') }}</button>
                         </div>
                     </div>
                 </div>
