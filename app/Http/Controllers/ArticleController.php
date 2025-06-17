@@ -48,4 +48,17 @@ class ArticleController extends Controller implements HasMiddleware
             new Middleware('auth', only: ['create']),
         ];
     }
+
+    // Ricerca articolo/Annuncio
+    // ----> mi è sembrato più corretto usare il controller Article invece che Public controller
+    // Spero vada bene :-)
+    public function searchArticles(Request $request)
+    {
+        $query = $request->input('query');
+        $articles = Article::search($query)->where('is_accepted', true)->paginate(10);
+        return view('article.searched', ['articles' => $articles, 'query' => $query]);
+    }
+
+
+
 }

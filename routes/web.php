@@ -23,7 +23,12 @@ Route::get ('/article/show/{article}', [ArticleController::class, 'show'])->name
 // Dettaglio Categoria
 Route::get ('/category/{category}', [ArticleController::class, 'byCategory']) ->name ('byCategory');
 
+// Ricerca
+Route::get('/article/search', [ArticleController::class, 'searchArticles'])->name('article.search');
+
  
+
+
 // ------------  Revisori ------------
 //  Dashboard revisori 
 Route::get('/revisor/index', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
@@ -39,3 +44,4 @@ Route::get('/revisor/request', [RevisorController::class, 'becomeRevisor'])->mid
 
 // Creare un revisore
 Route:: get('/revisor/make/{user}', [RevisorController:: class, 'makeRevisor'])->name( 'revisor.make');
+
