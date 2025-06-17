@@ -8,8 +8,16 @@ use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 
+// image upload
+use Livewire\WithFileUploads;
+
 class CreateArticleForm extends Component
 {
+    //Per Upload immagini
+    use WithFileUploads;
+    public $images = [];
+    public $temporary_images;
+
 
     #[Validate('required|min:5')]
     public $title;
@@ -19,14 +27,13 @@ class CreateArticleForm extends Component
 
     #[Validate('required|numeric')]
     public $price;
-    
+
     #[Validate('required')]
     public $category;
     public $article;
 
     public function store()
     {
-
         $this->validate();
         $this->article = Article::create([
             'title' => $this->title,
@@ -36,9 +43,16 @@ class CreateArticleForm extends Component
             'user_id' => Auth::id()
         ]);
 
+        if (count($this->images) > 0) {
+            foreach ($this->images as $image) {
+                $this->article->images()->create(['path' => $image->store('images', 'public')]);
+            }
+        }
+
+
         session()->flash('success', 'Articolo inserito correttamente');
         //svuotare i campi dopo la creazione
-        $this->reset();
+        $this->cleanForm();
     }
 
     public function render()
@@ -47,5 +61,34 @@ class CreateArticleForm extends Component
         return view('livewire.create-article-form', [
             'categories' => $categories
         ]);
+    }
+
+
+    public function updatedTemporaryImages()
+    {
+        if ($this->validate([
+            'temporary_images. *' => 'image|max:1024',
+            'temporary_images' => 'max:6'
+        ])) {
+            foreach ($this->temporary_images as $image) {
+                $this->images[] = $image;
+            }
+        }
+    }
+
+    public function removeImage($key)
+    {
+        if (in_array($key, array_keys($this->images))) {
+            unset($this->images[$key]);
+        }
+    }
+
+    protected function cleanForm()
+    {
+        $this->title = '';
+        $this->description = '';
+        $this->category = '';
+        $this->price = '';
+        $this->images = [];
     }
 }

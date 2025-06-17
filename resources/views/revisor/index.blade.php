@@ -6,13 +6,13 @@
                     <h1 class="display-6 text-center pb-2">
                         Revisor dashboard
                     </h1>
-                                  
+
                 </div>
-                  @if (session()->has('message'))
+                @if (session()->has('message'))
                     <div class="row justify-content-center">
                         <div class="col-12 alert alert-success text-center shadow rounded">
                             <h3 class="text-center pb-2">
-                            {{ session('message') }}
+                                {{ session('message') }}
                             </h3>
                         </div>
                     </div>
@@ -21,16 +21,31 @@
         </div>
         @if ($article_to_check)
             <div class="row justify-content-center pt-5">
-                <div class="col-md-8">
-                    <div class="row justify-content-center">
-                        @for ($i = 0; $i < 6; $i++)
-                            <div class="col-6 col-md-4 mb-4 text-center">
-                                <img src="https://picsum.photos/30{{ $i }}" class="img-fluid rounded shadow"
-                                    alt="immagine segnaposto">
+
+
+                @if ($article_to_check->images->count())
+                    @foreach ($article_to_check->images as $key => $image)
+                        <div class="col-6 col-md-4 mb-4">
+                            <div class="revisor-img-container">
+                                <img src="{{ Storage::url($image->path) }}" class="revisor-img"
+                                    alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}">
                             </div>
-                        @endfor
-                    </div>
-                </div>
+                        </div>
+                    @endforeach
+                @else
+                    @for ($i = 0; $i < 6; $i++)
+                        <div class="col-6 col-md-4 mb-4">
+                            <div class="revisor-img-container">
+                                <img src="https://picsum.photos/300" alt="immagine segnaposto"
+                                    class="revisor-img">
+                            </div>
+                        </div>
+                    @endfor
+                @endif
+
+
+
+
 
                 <div class="col-md-4 ps-4 d-flex flex-column justify-content-between">
                     <div>

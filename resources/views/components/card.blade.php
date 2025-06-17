@@ -1,5 +1,7 @@
 <div class="card mx-auto card-w shadow mb-4">
-    <img src="https://picsum.photos/20{{ $article->id }}" class="card-img-top" alt="{{ __('ui.artimg') }}">
+   
+    <img src="{{ $article->images->isNotEmpty() ? Storage::url($article->images->first()->path) : 'https://picsum.photos/200'}}"
+class="card-img-top" alt="Immagine dell'articolo {{ $article->title }}">
     <div class="card-body">
         <h4 class="card-title">{{ $article->title }}</h4>
         @if (isset($article->category))
