@@ -20,7 +20,7 @@ Route::get('/article/index', [ArticleController::class, 'index']) ->name('articl
 // Dettaglio Articolo
 Route::get ('/article/show/{article}', [ArticleController::class, 'show'])->name('article.show');
 
-// Dettaglio Categoria
+// Dettaglio Categoria Articoli
 Route::get ('/category/{category}', [ArticleController::class, 'byCategory']) ->name ('byCategory');
 
 // Ricerca
@@ -43,5 +43,10 @@ Route::patch('/revisor/reject/{article}', [RevisorController::class, 'reject'])-
 Route::get('/revisor/request', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name ('revisor.become');
 
 // Creare un revisore
-Route:: get('/revisor/make/{user}', [RevisorController:: class, 'makeRevisor'])->name( 'revisor.make');
+Route::get('/revisor/make/{user}', [RevisorController:: class, 'makeRevisor'])->name( 'revisor.make');
 
+
+
+// ------------  Lingua ------------
+// Language
+Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');

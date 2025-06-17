@@ -2,7 +2,7 @@
     <div class="container-fluid ">
         <div class="row height-custom justify-content-center align-items-center text-center">
             <div class="col-12">
-                <h1 class="display-4 "><i class="bi bi-file-earmark-check-fill"></i><br>Tutti gli Annunci</h1>
+                <h1 class="display-4 "><i class="bi bi-file-earmark-check-fill"></i><br>{{ __('ui.allann') }}</h1>
             </div>
         </div>
         <div class="row justify-content-center align-items-center py-5">
@@ -13,7 +13,8 @@
             @empty
                 <div class="col-12">
                     <h3 class="text-center">
-                        Non sono ancora stati ancora pubblicati annunci
+                        {{ __('ui.noann') }}
+                        
                     </h3>
                 </div>
             @endforelse

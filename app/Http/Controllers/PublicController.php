@@ -13,5 +13,10 @@ class PublicController extends Controller
         return view('welcome', compact('articles'));
     }
 
-
+    // Settare la Lingua
+    public function setLanguage($lang)
+    {
+        session()->put('locale', $lang);
+        return redirect()->back();
+    }
 }

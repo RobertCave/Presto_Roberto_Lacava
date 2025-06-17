@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\IsRevisor;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\SetLocaleMiddleware;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -13,6 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
     health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        
+        // Middleware per la lang
+        $middleware->web(append: [SetLocaleMiddleware::class]);
+
         // Middleware per bloccare le richieste da chi non è revisore
         $middleware->alias([
             'isRevisor' => IsRevisor::class

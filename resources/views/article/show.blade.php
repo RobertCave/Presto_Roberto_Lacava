@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12">
-                <h3>Dettaglio Annuncio </h3>
+                <h3>{{ __('ui.anndet') }}</h3>
             </div>
         </div>
         <div class="row height-custom justify-content-center py-5">
@@ -34,29 +34,29 @@
                     </button>
                 </div>
             </div>
-            <div class="col-12 col-md-6 mb-3 height-custom "> Annuncio creato il:
+            <div class="col-12 col-md-6 mb-3 height-custom ">{{ __('ui.anncreate') }} 
                 {{-- Un pochetto di stile per ora e data ;-)  --}}
                 {{ $article->created_at->format('d/m/Y H:i') }}
                 <h2 class="display-5">
                     <span class="fw-bold">
                         {{ $article->title }}</span>
                 </h2>
-                <p>Categoria annuncio: <span class="fw-bold"><a href="{{ route('byCategory', $article->category) }}"
-                            title="Visualizza tutti gli articoli in {{ $article->category->name }}">
+                <p>{{ __('ui.catsingle') }} <span class="fw-bold"><a href="{{ route('byCategory', $article->category) }}"
+                            title="{{ __('ui.viallart') }} {{ $article->category->name }}">
                             {{ $article->category->name }}
                         </a> </span></p>
                 <h5>
-                    <div class="fw-bold"> Descrizione annuncio: </div>
+                    <div class="fw-bold"> {{ __('ui.descart') }} </div>
                 </h5>
                 {{-- Due ore per capire come eliminare i maledetti <br> nella visualizzazione della descrizione. grazie "nl2br" --}}
                 <h6> {!! nl2br($article->description) !!} </h6>
                 <div class=" d-flex flex-column justify-content-center h-75">
-                    <h4> Prezzo: <strong>{{ $article->price }} € </strong>
+                    <h4> {{ __('ui.price') }} {{ $article->price}}€ </strong>
                     </h4>
 
                 </div>
             </div>
         </div>
-        <button class="btn btn-secondary me-md-1 btn-sm" onclick="window.history.back()">Torna indietro</button>
+        <button class="btn btn-secondary me-md-1 btn-sm" onclick="window.history.back()">{{__('ui.back')}}</button>
     </div>
 </x-layout>
