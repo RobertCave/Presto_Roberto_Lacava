@@ -46,4 +46,25 @@ return
     'anncreate'             => 'Article created on:',
     'descart'               => 'Article description:',
     'back'                  => 'Go back',
+
+
+// Revisor's Dashboard
+    'previous' => 'Previous',
+    'next' => 'Next',
+    'dashboard' => "Revisor's Dashboard",
+    'author' => 'Author',
+    'refuse' => 'Refuse',
+    'accept' => 'Accept',
+    'noRevision' => 'No articles to review',
+    'backToHome' => 'Back to homepage',
+    'phprev' => "Image preview",
+    'noImg' => "No images added by the author",
+    'Labels' => "Labels",
+    'noLabels' => "No Labels",
+    'Ratings' => "Ratings",
+    'adult' => 'adult',
+    'violence' => 'violence',
+    'spoof' => 'spoof',
+    'racy' => 'racy',
+    'medical' => 'medical',
 ];

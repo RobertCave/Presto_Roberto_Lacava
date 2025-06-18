@@ -51,5 +51,24 @@ return
     'descart'               => 'Descrizione annuncio:',
     'back'                  => 'Torna indietro',
 
-
+    // Pannello di controllo del revisiore
+    'previous' => 'Precedente',
+    'next' => 'Successivo',
+    'dashboard' => 'Pannello del Revisore',
+    'author' => 'Autore',
+    'refuse' => 'Rifiuta',
+    'accept' => 'Accetta',
+    'noRevision' => 'Nessun articolo da revisionare',
+    'backToHome' => 'Torna alla homepage',
+    'phprev' => "Anteprima delle immagini",
+    'noImg' => "Nessuna immagine inserita dall'utente",
+    'Labels' => "Etichette",
+    'noLabels' => "Nessuna etichetta",
+    'Ratings' => "Valutazioni",
+    'adult' => 'adulti',
+    'violence' => 'violenza',
+    'spoof' => 'falso',
+    'racy' => 'razzista',
+    'medical' => 'medico',
 ];
+

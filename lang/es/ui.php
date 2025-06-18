@@ -46,4 +46,22 @@ return
     'anncreate'             => 'Anuncio creado el:',
     'descart'               => 'Descripción del anuncio:',
     'back'                  => 'Volver atrás',
+
+    // Dashboard
+    'dashboard' => "Panel de control del revisor",
+    'author' => 'Autor',
+    'refuse' => 'Rechazar',
+    'accept' => 'Aceptar',
+    'noRevision' => 'No hay elementos para revisar',
+    'backToHome' => 'Volver a la página de inicio',
+    'phprev' => "Vista previa de imágenes",
+    'noImg' => "No hay imágenes insertadas por el autor.",
+    'noLabels' => "Sin etiquetas",
+    'Labels' => "Etiquetas",
+    'Ratings' => "Calificaciones",
+    'adult' => 'adultos',
+    'violence' => 'violencia',
+    'spoof' => 'falso',
+    'racy' => 'racista',
+    'medical' => 'medico',
 ];
