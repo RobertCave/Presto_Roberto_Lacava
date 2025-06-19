@@ -31,7 +31,7 @@
 
                         <div class="mb-3">
                             <label for="category" class="form-label">Categoria *</label>
-                            <select id="category" wire:model.blur="category"
+                            <select id="category" wire:model="category"
                                 class="form-control @error('category') is-invalid @enderror"
                                 aria-describedby="categoryHelp" required>
                                 <option value="" selected disabled>Seleziona una categoria</option>

@@ -14,6 +14,11 @@ return [
     |
     */
 
+'google_vision' => [
+    'credentials' => env('GOOGLE_APPLICATION_CREDENTIALS'),
+],
+
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
